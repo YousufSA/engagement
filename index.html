@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+<!--<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">-->
+    <title>AdiSuf | Engagement Countdown</title>
+      <style>
+        * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  align-items: center;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(./assets/img/horizontal.jpg);
+        background-size: cover;
+    display: flex;
+        background-position: bottom;
+  font-family: -apple-system, 
+    BlinkMacSystemFont, 
+    "Segoe UI", 
+    Roboto, 
+    Oxygen-Sans, 
+    Ubuntu, 
+    Cantarell, 
+    "Helvetica Neue", 
+    sans-serif;
+}
+
+.container {
+  color: #FFFFFF;
+  margin: 0 auto;
+  text-align: center;
+    height: 100%;
+    padding-top: 40px;
+}
+
+h1 {
+  font-weight: normal;
+  letter-spacing: .125rem;
+padding: 30px 0px 10px;
+}
+          h1 span{
+                  font-family: 'Satisfy', cursive;
+        font-size: 4rem;
+          }
+          h2{
+              font-family: 'Satisfy', cursive;
+              font-size: 2.5rem;padding-bottom: 20px;
+          }
+li {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+padding-top: 80px;
+}
+
+li span {
+  display: block;
+  font-size: 4.5rem;
+}
+
+.message {
+  font-size: 4rem;
+  display: none;
+  padding: 1rem;
+}
+
+.emoji {
+  padding: 0 .25rem;
+}
+.bismillah {
+    max-width: 200px;
+    filter: brightness(0) invert(1);
+}
+          .line{
+                  max-width: 300px;
+    margin: auto;
+              position: relative;
+          }
+.line::before, .line::after {
+    content: " ";
+    width: 40%;
+    height: 1px;
+    position: absolute;
+    border-bottom: 1px solid #FFFFFF;
+    left: 0px;
+}
+          .line::after{
+              left: unset;
+              right: 0px;
+          }
+          .line .fa{
+              position: relative;
+              top: -8px;
+          }
+          .bismillah-msg{
+              padding-bottom: 100px;
+          }
+@media all and (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  li {
+    font-size: 0.7rem;
+    padding: .75rem;
+  }
+  
+  li span {
+    font-size: 2.375rem;
+  }
+    h1 span{
+     font-size: 2rem;   
+    }
+    .container{
+        height: initial;
+        padding-top: 0px;
+    }
+    h2 span{
+        display: block;
+    }
+    .bismillah-msg{
+        padding-bottom: 80px;
+    }
+}
+      </style>
+  </head>
+  <body>
+      <div class="container">
+          <img src="assets/img/bismillah.png" class="bismillah"/>
+          <p class="bismillah-msg">In The Name Of Allah The Most Merciful</p>
+          <h2><span>Yousuf S A</span> & <span>Adiba Shabnam</span></h2>
+          <p>ARE GETTING ENGAGED</p>
+          <p class="line"><i class="fa fa-heart"></i></p>
+          <p>MAY 19<sup>th</sup>, 2021</p>
+          
+          <div id="countdown">
+              <ul>
+                  <li><span id="days"></span>days</li>
+                  <li><span id="hours"></span>Hours</li>
+                  <li><span id="minutes"></span>Minutes</li>
+                  <li><span id="seconds"></span>Seconds</li>
+              </ul>
+          </div>
+      </div>
+      
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+      <script>
+        (function () {
+  const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+  let date = "May 19, 2021 07:30:00",
+      countDown = new Date(date).getTime(),
+      x = setInterval(function() {    
+
+        let now = new Date().getTime(),
+            distance = countDown - now;
+
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+        //do something later when date is reached
+        if (distance < 0) {
+          let headline = document.getElementById("headline"),
+              countdown = document.getElementById("countdown"),
+              content = document.getElementById("content");
+
+          countdown.style.display = "none";
+          content.style.display = "block";
+
+          clearInterval(x);
+        }
+        //seconds
+      }, 0)
+  }());
+      </script>
+  </body>
+</html>
